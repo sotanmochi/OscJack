@@ -9,6 +9,9 @@ namespace OscJack
 {
     public sealed class OscClient : IDisposable
     {
+        public OscPacketEncoder Encoder => _encoder; // Version 2.1.0
+        public Socket Socket => _socket;             // Version 2.1.0
+
         #region Object life cycle
 
         public OscClient(string destination, int port)

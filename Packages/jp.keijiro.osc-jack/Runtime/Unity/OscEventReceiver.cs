@@ -1,6 +1,7 @@
 // OSC Jack - Open Sound Control plugin for Unity
 // https://github.com/keijiro/OscJack
 
+#if UNITY_2021_3_OR_NEWER // Version 2.1.0
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections.Generic;
@@ -320,3 +321,4 @@ namespace OscJack
         #endregion
     }
 }
+#endif

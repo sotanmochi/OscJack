@@ -5,7 +5,7 @@ using System;
 
 namespace OscJack
 {
-    internal sealed class OscPacketEncoder
+    public sealed class OscPacketEncoder // Version 2.1.0
     {
         public Byte[] Buffer { get { return _buffer; } }
         public int Length { get { return _length; } }
