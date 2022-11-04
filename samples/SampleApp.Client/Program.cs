@@ -1,6 +1,6 @@
 using System;
 using System.Threading;
-using OscJack;
+using OscJack.Extensions;
 
 namespace OscJack.SampleApp.Client
 {
@@ -22,14 +22,23 @@ namespace OscJack.SampleApp.Client
             // IP address, port number
             var client = new OscClient("127.0.0.1", port);
 
-            // Send two-component float values ten times.
+            // Send values ten times.
             var random = new Random();
-            for (var i = 0; i < 10; i++)
+            for (var k = 0; k < 10; k++)
             {
                 Thread.Sleep(500);
+
+                client.Send("/start");
+
                 client.Send("/test",              // OSC address
-                            i * 10.0f,            // First element
+                            k * 10.0f,            // First element
                             random.NextSingle()); // Second element
+
+                client.Send("/Vector3", $"Vector3[{k}]", k*1f, k*2f, k*3f);
+                client.Send("/Vector7", $"Vector7[{k}]", k*1f, k*2f, k*3f, k*4f, k*5f, k*6f, k*7f);
+
+                client.Send("/end");
+
                 Console.WriteLine($"Send message");
             }
         }
